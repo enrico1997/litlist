@@ -19,22 +19,41 @@ $("#itemSubmit").on("click", function(event) {
   event.preventDefault();
 
 // Grabs user input
+  var item_category = $("#itemCategory").val().trim();
   var item_name = $("#item_name").val().trim();
   var item_id = $("#item_id").val().trim();
   var review = $("#review").val().trim();
   var username = $("#username").val().trim();
 
-// Creates local "temporary" object for holding employee data
+
+// Creates local "temporary" object for holding item data
   var newItem = {
-    name: empName,
-    role: empRole,
-    start: empStart,
-    rate: empRate
+    item_category: item_category,
+    item_id: item_id,
+    item_name: item_name,
+    item_review: review,
+    username: username
   };
+//keys need to match the database
+// Uploads item data to the database
+  database.ref().push(newItem);
 
-// Uploads employee data to the database
-  database.ref().push(newEmp);
+  console.log(newItem.item_category);
+  console.log(newItem.item_id);
+  console.log(newItem.item_name);
+  console.log(newItem.item_review);
+  console.log(newItem.username);
 
+  //modal
+  
+
+  $("#itemCategory").val("");
+  $("#item_name").val("");
+  $("item_id").val("");
+  $("#review").val("");
+  $("#username").val("");
+
+}
 //////////////////////////////////////////////////////////////////////////////
 //                          User Info Submitted                             //
 //////////////////////////////////////////////////////////////////////////////
