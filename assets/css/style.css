@@ -1,1 +1,46 @@
-/*Style.CSS*/
+h1,
+h2,
+h3,
+label,
+th,
+td {
+  font-weight: 400;
+  font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: PermanentMarker-Regular;
+  src: url(PermanentMarker-Regular.ttf);
+}
+
+h1 {
+  font-family: PermanentMarker-Regular;
+  padding-bottom: 20px;
+  font-size: 40px;
+  line-height: 49px;
+  border-bottom: 3px solid #ddd;
+}
+
+.jumbotron {
+	background: url("../images/smoke.jpg");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	padding: 40px;
+}
+
+button,
+form,
+input {
+  margin: 10px;
+  padding-top: 5px;
+}
+
+body {
+  margin: 0;
+}
+
+footer {
+  font-family: PermanentMarker-Regular;
+}
+
+
