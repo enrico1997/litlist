@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LitCategories</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+				<h3>Books / Audible</h3>
+				<button id="books" class="catButt"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Movies / Music</h3>
+				<button id="movies" class="catButt"><span class="glyphicon glyphicon-music" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Electronics / Computers</h3>
+				<button id="electronics" class="catButt"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<h3>Home / Garden</h3>
+				<button id="home" class="catButt"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Food / Grocery</h3>
+				<button id="food" class="catButt"><span class="glyphicon glyphicon-apple" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Beauty / Health</h3>
+				<button id="beauty" class="catButt"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<h3>Toys / Games</h3>
+				<button id="toys" class="catButt"><span class="glyphicon glyphicon-knight" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Apparel</h3>
+				<button id="apparel" class="catButt"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button>
+			</div>
+			<div class="col-sm-4">
+				<h3>Sports / Outdoors</h3>
+				<button id="sports" class="catButt"><span class="glyphicon glyphicon-tent" aria-hidden="true"></span></button>
+			</div>
+		</div>
+	</div>
+	<div class="container" id="tbleContainer">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2> LiTLiST by Category </h2>
+			</div>
+			<div class="panel-body">
+				<table id="catTable">
+					<thead>
+						<tr>
+						    <th>Item Name</th>
+						    <th>Link</th> 
+						    <th>Why it's LiT</th>
+						    <th>Recommended By</th> 
+					    </tr>
+				    </thead>
+				    <tbody>
+				    </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+</body>
