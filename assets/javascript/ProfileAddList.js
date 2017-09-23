@@ -10,6 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+        var path;
 
 $("#submit-user").on("click", function(event) {
 
@@ -17,6 +18,7 @@ $("#submit-user").on("click", function(event) {
 
   // Grabs user input
   var userNew = $("#userName").val().trim();
+          var userCityNew = $("#userCity").val().trim();
   var itemCategory = $("#itemCategory").val().trim();
   var itemName = $("#item_name").val().trim();
 
@@ -26,26 +28,67 @@ $("#submit-user").on("click", function(event) {
   // Creates local "temporary" object for holding train data
   var newPerson = {
     username: user,
-    location: '',
-    image: '',
-    items: 
-      [
-        {
-          item_category: itemCategory,
-          item_name:  itemName,
-          item_review:   itemReview,
-          item_id: ''
-        }
-      ]
-  };
+            location: userCityNew,
+            image: userNew,
+            items: []
+           
+          };
+          console.log(newPerson);
 
-  console.log(newPerson);
+          // $("#createInitial").attr('data', userName);
 
-  // $("#createInitial").attr('data', userName);
+          var ref = database.ref("/users/");
+          var createPerson = ref.push(newPerson);
 
-  var ref = database.ref("/users/");
-  var createPerson = ref.push([newPerson]);
-  var path = createPerson.toString();
-  alert(path);
+          path = createPerson.key;
+          console.log(path);
+          sessionStorage.setItem("uid", path);
 
-});
+          addItem(itemCategory, itemName, itemReview);
+         
+        });
+
+          $("#search-product").on("click", function(e) {
+            event.preventDefault();
+            // Grabs user input
+            var naddCategory = $("#addCategory").val().trim();
+            var naddName = $("#addName").val().trim();
+            var naddReview = $("#addReview").val().trim();
+
+            addItem(naddCategory, naddName, naddReview);
+           
+        
+
+        });
+
+
+          function addItem (category, name, review){
+            var postObject = {
+                nitemCategory: category,
+                nitemName: name,
+                nitemReview: review,
+
+              };
+          var uid = sessionStorage.getItem("uid");
+
+    // Write the new post's data simultaneously in the posts list and the user's post list.
+     
+          
+
+          return firebase.database().ref('/users/' + uid + "/items").push(postObject);
+        
+
+          };
+
+          
+          // Creates local "temporary" object for holding train data
+    
+
+
+  // Get a key for a new Post.
+ 
+
+          // database.ref("user", function(){
+
+          //       list.push(newProduct);
+          //  });
