@@ -35,25 +35,62 @@ $("#itemSubmit").on("click", function(event) {
     username: username
   };
 //keys need to match the database
+var newItem = {
+    nitemCategory: item_category,
+    nitemName: item_name,
+    nitemReview: review,
+  };
 // Uploads item data to the database
   database.ref().push(newItem);
 
   console.log(newItem.item_category);
-  console.log(newItem.item_id);
+  //console.log(newItem.item_id);
   console.log(newItem.item_name);
-  console.log(newItem.item_review);
-  console.log(newItem.username);
+  console.log(newItem.review);
+  //console.log(newItem.username);
 
-  //modal
+  //modal goes here
   
-
   $("#itemCategory").val("");
   $("#item_name").val("");
   $("item_id").val("");
   $("#review").val("");
   $("#username").val("");
 
-}
+});
+
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+  console.log(childSnapshot.val());
+  // Store everything into a variable.
+  var itemCategory = childSnapshot.val().name;
+  var trainName = childSnapshot.val().name;
+  var trainDestination = childSnapshot.val().destination;
+  var trainTime = childSnapshot.val().time;
+  var trainFrequency = childSnapshot.val().frequency;
+
+  var timeRemaining = moment().diff(moment.unix(trainTime), "minutes") % trainFrequency;
+  var tMinutesTillTrain = trainFrequency - timeRemaining;
+
+  var nextTrain = moment().add(tMinutesTillTrain, "m").format("hh:mm A");
+  // Train Info
+  console.log(trainName);
+  console.log(trainDestination);
+  console.log(trainTime);
+  console.log(trainFrequency);
+  // Format the train time start
+  var trainTimeFormatted = moment.unix(trainTime).format("HH:mm");
+  
+  // Add each train's data into the table
+  $("#userInput > tbody")
+  .append("<tr>").data("id", childSnapshot.key) 
+  .append($("<td>").text(trainName))
+  .append($("<td>" + trainDestination + "</td>"))
+  .append($("<td>" + trainFrequency + "</td>"))
+  .append($("<td>" + nextTrain + "</td>"))
+  .append($("<td>" + tMinutesTillTrain + "</td>"))
+  .append($("<td>"));
+   
+});
 //////////////////////////////////////////////////////////////////////////////
 //                          User Info Submitted                             //
 //////////////////////////////////////////////////////////////////////////////
