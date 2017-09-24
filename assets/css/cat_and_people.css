@@ -27,9 +27,14 @@ h3 {
 	white-space: nowrap;
 }
 
+.ppl {
+	bottom: 10%;
+}
+
 .col-sm-4 {
 	text-align: center;
 	margin-top: 30px;
+	height: 217.5px;
 }
 
 body {
@@ -37,8 +42,10 @@ body {
 	font-family: 'Permanent Marker', cursive;
 }
 
-.container {
+#pplCont {
 	background-color: lightgrey;
+	height: 742.5px;
+	overflow-y: scroll;
 }
 
 #tbleContainer {
@@ -57,3 +64,7 @@ table {
   	border-collapse: separate;
   	border-spacing: 25px 0;
 }
+img {
+	max-height: 100%;
+}
+
