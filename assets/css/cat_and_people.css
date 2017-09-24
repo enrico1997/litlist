@@ -2,6 +2,8 @@
 
 /* Categories and People Pages*/
 
+
+
 .catButt {
 	font-size: 20px;
 	padding: 15% 20% 15% 20%;
@@ -57,3 +59,8 @@ table {
   	border-collapse: separate;
   	border-spacing: 25px 0;
 }
+#apparel{
+	font-size: 1.75em;
+	padding-bottom: 10px;
+}
+
