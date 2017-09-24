@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <title>Create Your Profile and LiTLiST</title>
   
   <!-- jQuery -->
@@ -13,6 +13,7 @@
   <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
   <!-- Firebase Reference -->
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
@@ -28,8 +29,19 @@
 <body>
   <!-- JUMBO -->
   <div class="jumbotron">
-      <h1 class="animated zoomIn">LiTLiST</h1>
+      <h1 class="animated pulse">LiTLiST</h1>
       <p>A few of your favourite things...</p>
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
+        Settings
+         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Log Out</a></li>
+        </ul>
+      </div>
   </div>
 
   <!-- MAIN -->
@@ -40,7 +52,7 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Create Your Profile</strong></h3>
+            <h3 class="panel-title"><strong>Create your Profile</strong></h3>
           </div>            
           <div class="panel-body" id="createProfile">
             <div class="form-group">
@@ -59,13 +71,13 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Create LiTLiST</strong></h3>
+            <h3 class="panel-title"><strong>Start your LiTLiST</strong></h3>
           </div>          
           <!-- Favorites form (various inputs) -->
           <div class="panel-body" id="createList">
             <form role="form">
-              <div>
-                <label for="itemCategory">Category</label>
+              <div class="form-group">
+                <label for="text">Choose a Category</label>
                 <select class="form-control" id="itemCategory">
                   <option value="Books">Books</option>
                   <option value="Movies">Movies</option>
@@ -77,16 +89,16 @@
                 </select>
               </div>
               <!-- Fav Product -->
-              <div>
-                <label for="item_name">Type in your favourite product</label>
+              <div class="form-group">
+                <label for="item_name">Type in your Favourite Product</label>
                 <input class="form-control" id="item_name" type="text">
               </div> 
               <!-- Write Review -->
-              <div>
-                <label for="review">Write a review</label>
+              <div class="form-group">
+                <label for="review">Why is this your Favourite?</label>
                 <input class="form-control" id="review" type="text">
               </div>        
-             <button class="btn btn-primary" id="submit-user" type="submit">Submit</button>
+             <button class="btn btn-primary" id="submit-user" type="submit">Search</button>
            </form>
           </div>          
         </div>
@@ -99,6 +111,32 @@
 <footer>
 <div id="footer">
   <div class="container">
+    <div class="footer__links__primary">
+    </div>
+    
+    <div class="row social-links">
+      <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
+      <span class="icon-facebook">
+        <picture>
+          <source srcset="./assets/images/facebook.png" media="(min-width: 600px)">
+          <img src="./assets/images/facebook.png"" alt="MDN">
+        </picture>
+      </span>
+      <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
+      <span class="icon-instagram">
+        <picture>
+          <source srcset="./assets/images/instagram.png" media="(min-width: 600px)">
+          <img src="./assets/images/instagram.png"" alt="MDN">
+        </picture>
+      </span>
+      <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
+      <span class="icon-facebook">
+        <picture>
+          <source srcset="./assets/images/twitter.png" media="(min-width: 600px)">
+          <img src="./assets/images/twitter.png"" alt="MDN">
+        </picture>
+      </span>
+    </div>
     <p class="muted credit">Copyright &copy; 2017 LiTLiST Inc.</p>
   </div>
 </div>
