@@ -58,13 +58,14 @@ body {
 }
 #pplCont {
 	background-color: lightgrey;
-	height: 742.5px;
+	height: 375px;
 	overflow-y: scroll;
 }
 #tbleContainer {
 	padding-left: 25px;
 	padding-right: 25px;
 	margin-top: 30px;
+	overflow-x: scroll;
 }
 th, td {
 	width: 25%;
