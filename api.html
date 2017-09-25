@@ -1,21 +1,44 @@
-<!DOCTYPE <html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <title>LiTLiST</title>
+  <title>LiTLiST API</title>
+  
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <!-- Moment.js Reference -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  
+  <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+  <!-- Animate -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Style -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-  <!-- JQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
 	
+<!-- MAIN -->
+  <div class="container">
+   
+    <!-- A bunch of products resulting from search  -->
+    <div id="buttons-view"></div>
+
+    <!-- Product response (image and other properties) display here -->
+    <div id="product-view"></div>
+
+  </div>
+
 
 <footer>
 <div id="footer">
