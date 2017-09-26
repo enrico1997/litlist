@@ -1,117 +1,5 @@
-<!DOCTYPE html>
-<html lang="en-US">
-<head>
-  <meta charset="UTF-8">
-  <title>Create Your Profile and LiTLiST</title>
-  
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  
-  <!-- Moment.js Reference -->
-  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-  
-  <!-- Bootstrap CDN-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
-
-  <!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-
-  <!-- Animate -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  
-  <!-- Style -->
-  <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
-
-</head>
-
-<body>
-
-<div class="row">
-<div class="col-md-12">
-
-  <img class= "center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThpN2z54GCTLb3qE9JEtQ5QVbtL-DEj33eYbrFNPbtKMFs4T9k" alt="crystal ball" style="width:150px;height:150px;">
-</div>
-</div>
-
-<br>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgName"> Name </h1>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgLocation"> Location </h1>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgLit"> Lit List </h1>
-</div>
-</div>
-
-<div class="row">
-      <div class="col-lg-12">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Add Item to Lit List</h3>
-            </div>
-            
-            <div class="panel-body">
-              <form id="add-item-form">
-                <div>
-                  <label for="profPgCat">Category</label>
- <!-- <form action="/action_page.php"> -->
-                  <select class="form-control" name="profPgCat">
-                  <option value="Books">Books</option>
-                  <option value="Movies">Movies</option>
-                  <option value="Beauty">Beauty</option>
-                  <option value="Health">Health</option>
-                  <option value="Sports">Sports</option>
-                  <option value="Home">Home</option>
-                  <option value="Toys">Toys</option>
-
-                  </select>
-
-                </div>
-              
-                <br>
-
-                <div>
-                    <label for="prodAdd">Type in your favorite product</label>
-                    <input class="form-control" name="proAdd" type="text">
-                </div>      
-                
-                <br>
-
-                <div>
-                  <label for="revAdd">Write a review</label>
-                  <input class="form-control" name="revAdd" type="text">
-                </div>
-                
-                <button class="btn btn-primary" name="profSearch" type="submit">Search</button>
-
-              </form>
-            <!-- panel body div closure -->
-            </div>
-
-      </div>
-
-    </div>
-  </div>
-  
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script type="text/javascript">
- // @TODO: Remove this line after session storage/login page is connected to this one:
- 
 function createModal(title, formId, formData) {
-  return $("<div>").modal().addClass("modal fade").append(
+  return $("div#global-modal").append(
     $("<form>").attr("id", formId).append(
         $("<div>").addClass("modal-dialog").append(
             $("<div>").addClass("modal-content").append(
@@ -126,26 +14,37 @@ function createModal(title, formId, formData) {
                 )
             ).append(
                 $("<div>").addClass("modal-footer").append(
-                  $("<button>").addClass("btn btn-default").data("dismiss", "modal").text("close")
+                  $("<button>").attr('type', 'button').addClass("btn btn-default").data("dismiss", "modal").text("close").on('click', function(e) {
+                  	$(this).closest('.modal').modal('toggle');
+                  })
                 ).append(
                     $("<button>").addClass("btn btn-primary").text("Save changes")
                 )
             )
          )  
      )
-  )                   
+  ).modal();
 };
 
 
-function createUserForm() {
-  createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>")
-  .appendTo('body')
-
+function showUserForm() {
+  createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>"))
+    .modal('show');
+  $('#createProfile').on('hidden.bs.modal', function(e) { 
+  	console.log("The Create Profile Modal was closed", e);
+  });
 }
 
- createUserForm();
+$(".ppl").on("click", function(e){
 
- sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
+	e.preventDefault();
+	createSecondModal("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
+	.modal("show");
+});
+
+ showUserForm();
+
+ // sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
 
   var config = {
     apiKey: "AIzaSyD43oZfYX_igbsUwjewJtrNGQr4bpCrzBk",
@@ -161,7 +60,7 @@ function createUserForm() {
   var database = firebase.database();
   var path;
 
-  $("#submit-user").on("click", function(event) {
+  $(".btn btn-primary").on("click", function(event) {
 
     event.preventDefault();
 
@@ -276,8 +175,7 @@ function createUserForm() {
   //   };
   // });
 
-  // var snapItemString = JSON.stringify(snapItem);
-  
- </script>
-</body>
-</html>
+  // var snapItemString = JSON.stringify(sn
+
+
+

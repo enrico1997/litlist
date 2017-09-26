@@ -27,7 +27,7 @@ $("#submit-user").on("click", function(event) {
 
   // Creates local "temporary" object for holding train data
   var newPerson = {
-    username: user,
+            username: user,
             location: userCityNew,
             image: userNew,
             items: []
