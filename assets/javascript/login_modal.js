@@ -35,31 +35,31 @@ function showUserForm() {
   });
 }
 
-
-$("#pplRows").on("click", function createInitalLitList{
+//TODO: ADD A BUTTON TO HTML TO ENABLE THIS ONCLICK!!!!!!!!!
+$("#InitListButton").on("click", function createInitalLitList(){
   e.preventDefault();
   createModal("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"))        
   .modal("show");
   
   $('#CreateInitial').on('hidden.bs.modal', function(e) { 
     console.log("The Add List was closed", e);
-  };
+  });
 });           
 
 
-$("#addLit").on("click", function AddLitList{
+$("#addLit").on("click", function AddLitList(e){
 
 	e.preventDefault();
-	createModal("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
+	createModal("Lit", "Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
 	.modal("show");
   $('#AddtoList').on('hidden.bs.modal', function(e) { 
     console.log("The Add List was closed", e);
   });
 });
 
- showUserForm();
- creatInitialLitList();
- AddLitList();
+ //showUserForm();
+ //createInitialLitList();
+ //AddLitList();
 
  // sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
 
@@ -72,13 +72,13 @@ $("#addLit").on("click", function AddLitList{
     messagingSenderId: "188274961247"
   };
 
-  firebase.initializeApp(config);
+  //firebase.initializeApp(config);
 
   var database = firebase.database();
   var path;
 
-  userNew;
-  userCityNew;
+  //userNew;
+  //userCityNew;
 
   $(".btn btn-primary").on("click", function(event) {
 

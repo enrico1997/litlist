@@ -7,7 +7,10 @@
     storageBucket: "litlist-306a8.appspot.com",
     messagingSenderId: "188274961247"
   };
-  firebase.initializeApp(config);
+  
+    firebase.initializeApp(config);
+  
+  
 
   var database = firebase.database();
 
@@ -47,12 +50,18 @@ database.ref("/users").on("child_added", function(childSnapshot) {
         $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage + ".jpg").attr('id', userGuid).attr('val',userName))
       );
 
+     
+
 }); // end of fb listener
 
-  $("h3").click(function(){
+  $(document).on('click', 'img', function(){
     alert("clicked")
     //replace id with this.id
+
+    //console.log(database.ref("/users/" + this.id).once("value"));
     database.ref("/users/" + this.id).once("value").then(function(snap){
+
+
         console.log(snap);
         var users = snap.val();
         var items = users.items
@@ -67,15 +76,19 @@ database.ref("/users").on("child_added", function(childSnapshot) {
           var itemName = items[key].nitemName;
           var itemReview = items[key].nitemReview;
 
-         $("#catTable > tbody")
+         $("#productRows")
     //.append("<tr>").data("id", .key)
-    .append($("<tr>").text(itemCategory))
-    .append($("<td>" + itemId + "</td>"))
-    .append($("<td>" + itemName + "</td>"))
-    .append($("<td>" + itemReview + "</td>"))
-    .append($("<td>"));
+        .append($("<tr>"))
+        .append($("<td>" + itemName + "</td>"))
+        .append($("<td>" + itemId + "</td>"))
+        .append($("<td>" + itemReview + "</td>"))
+        .append($("<td>" + itemCategory + "</td>"))
+        .append($("</tr>"));
     }
+
+    
     //$("#headerName").text(userName + "'s LiTLiST");
     });
+    $('#productRows').empty();
   });
 

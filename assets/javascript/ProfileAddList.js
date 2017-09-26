@@ -27,10 +27,10 @@ $("#submit-user").on("click", function(event) {
 
   // Creates local "temporary" object for holding user data
   var newPerson = {
-    username: user,
-    location: userCityNew,
-    image: userNew,
-    items: []       
+    //username: user,
+    //location: userCityNew,
+    //image: userNew,
+    //items: []       
 
             username: user,
             location: userCityNew,
