@@ -89,6 +89,7 @@ $("#submit-user").on("click", function(event) {
           //  });
 
   // Store everything into a variable.
+  
   $("h3").click(function(){
     alert("clicked")
     //replace id with this.id
