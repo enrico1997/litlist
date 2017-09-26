@@ -35,14 +35,31 @@ function showUserForm() {
   });
 }
 
-$(".ppl").on("click", function(e){
+
+$("#pplRows").on("click", function createInitalLitList{
+  e.preventDefault();
+  createModal("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"))        
+  .modal("show");
+  
+  $('#CreateInitial').on('hidden.bs.modal', function(e) { 
+    console.log("The Add List was closed", e);
+  };
+});           
+
+
+$("#addLit").on("click", function AddLitList{
 
 	e.preventDefault();
-	createSecondModal("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
+	createModal("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
 	.modal("show");
+  $('#AddtoList').on('hidden.bs.modal', function(e) { 
+    console.log("The Add List was closed", e);
+  });
 });
 
  showUserForm();
+ creatInitialLitList();
+ AddLitList();
 
  // sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
 
@@ -60,6 +77,9 @@ $(".ppl").on("click", function(e){
   var database = firebase.database();
   var path;
 
+  userNew;
+  userCityNew;
+
   $(".btn btn-primary").on("click", function(event) {
 
     event.preventDefault();
@@ -67,6 +87,10 @@ $(".ppl").on("click", function(e){
     // Grabs user input
     var userNew = $("#userName").val().trim();
     var userCityNew = $("#userCity").val().trim();
+  });
+
+$(".btn btn-primary").on("click", function(event) {
+
     var itemCategory = $("#itemCategory").val().trim();
     var itemName = $("#item_name").val().trim();
 
@@ -95,7 +119,7 @@ $(".ppl").on("click", function(e){
    
   });
 
-  $("#search-product").on("click", function(e) {
+  $("#addLit").on("click", function(e) {
     event.preventDefault();
     // Grabs user input
     var naddCategory = $("#addCategory").val().trim();
@@ -140,42 +164,14 @@ $(".ppl").on("click", function(e){
 
       var uid = sessionStorage.getItem("uid");
       database.ref('/users/' + uid + "/items").limitToLast(1).on("child_added", function(snap){
-        console.log('Last Item Added: ' + snap.key, snap.val());
+      console.log('Last Item Added: ' + snap.key, snap.val());
         // @TODO: Write the snap.val() items to the page somewhere.
 
       });
 
     }
 
-    // var postData = {
-    //   profCat: $("#profPgCat").val().trim(),
-    //   prodAdd: $("#prodAdd").val().trim(),
-    //   revAdd: $("#revAdd").val().trim(),
-    // };
-
-    //hide our modal 
-    // $('#myModal').modal('hide');
-    
-    // Update the child by its id ex: /collectionName/id
-    // var updates = {};
-    // updates['/uid/' + updateId] = postData;
-
-    // return database.ref().update(updates);
 
   });
-
-  // database.ref("/user").on("items", function(snap){
-
-  //   //store all the values in an object
-  //   var snapItem = {
-  //     "id": snap.key,
-  //     "product": snap.val().profAdd,
-  //     "category": snap.val().profCat,
-  //     "review": snap.val().revAdd
-  //   };
-  // });
-
-  // var snapItemString = JSON.stringify(sn
-
 
 
