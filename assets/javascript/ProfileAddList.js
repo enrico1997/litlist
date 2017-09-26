@@ -31,6 +31,13 @@ $("#submit-user").on("click", function(event) {
     location: userCityNew,
     image: userNew,
     items: []       
+
+            username: user,
+            location: userCityNew,
+            image: userNew,
+            items: []
+           
+
           };
           console.log(newPerson);
           // $("#createInitial").attr('data', userName);

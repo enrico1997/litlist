@@ -15,6 +15,10 @@ background-color: #ec6a9c;
     -o-transform: translate(0, 4px);
     transform: translate(0, 4px);
 }
+.modal {
+  display:block !important;
+}
+
 
 h1,
 h2,

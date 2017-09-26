@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Your Profile and LiTLiST</title>
+  
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  <!-- Moment.js Reference -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+   <!-- lodash -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>f
+
+  <script type="text/javascript" src=./assets/javascript/api.js></script>
+
+  <!-- Animate -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  
+  <!-- Style -->
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+
+</head>
+
+<body>
+
+<div class="row">
+<div class="col-md-12">
+
+  <img class= "center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThpN2z54GCTLb3qE9JEtQ5QVbtL-DEj33eYbrFNPbtKMFs4T9k" alt="crystal ball" style="width:150px;height:150px;">
+</div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="col-lg-12">
+  <h1 id="profPgName"> Name </h1>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+  <h1 id="profPgLocation"> Location </h1>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+  <h1 id="profPgLit"> Lit List </h1>
+</div>
+</div>
+
+<div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Add Item to Lit List</h3>
+            </div>
+            
+            <div class="panel-body">
+              <form id="search-item-form">
+                <div>
+                  <label for="profPgCat">Category</label>
+ <!-- <form action="/action_page.php"> -->
+                  <select class="form-control" name="profPgCat">
+                  <option value="Books">Books</option>
+                  <option value="Movies">Movies</option>
+                  <option value="Beauty">Beauty</option>
+                  <option value="Health">Health</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Home">Home</option>
+                  <option value="Toys">Toys</option>
+
+                  </select>
+
+                </div>
+              
+                <br>
+
+                <div>
+                    <label for="prodAdd">Type in your favorite product</label>
+                    <input class="form-control" name="proAdd" type="text">
+                </div>      
+                
+                <br>
+
+                <!-- <div>
+                  <label for="revAdd">Write a review</label>
+                  <input class="form-control" name="revAdd" type="text">
+                </div> -->
+                
+                <button class="btn btn-primary" name="profSearch" type="submit">Search</button>
+
+              </form>
+            <!-- panel body div closure -->
+            </div>
+      </div>
+
+    </div>
+  </div>
+  
+<div id="search-results"></div>
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+ // @TODO: Remove this line after session storage/login page is connected to this one:
+ 
+function createModal(title, formId, formData) {
+  return $("<div>").modal().addClass("modal fade").append(
+    $("<form>").attr("id", formId).append(
+        $("<div>").addClass("modal-dialog").append(
+            $("<div>").addClass("modal-content").append(
+                $("<div>").addClass("modal-header").append(
+                    $("<button>").addClass("close").data("dismiss", "modal").attr("aria-hidden", "true")
+                ).append(
+                    $("<h4>").addClass("modal-title").text(title)
+                )
+            ).append(
+              $("<div>").addClass("modal-body").append(
+                  formData
+                )
+            ).append(
+                $("<div>").addClass("modal-footer").append(
+                  $("<button>").addClass("btn btn-default").data("dismiss", "modal").text("close")
+                ).append(
+                    $("<button>").addClass("btn btn-primary").text("Save changes")
+                )
+            )
+         )  
+     )
+  )                   
+};
+
+
+function createUserForm() {
+  createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>")
+  .appendTo('body')
+
+}
+
+ createUserForm();
+
+ sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
+
+  var config = {
+    apiKey: "AIzaSyD43oZfYX_igbsUwjewJtrNGQr4bpCrzBk",
+    authDomain: "litlist-306a8.firebaseapp.com",
+    databaseURL: "https://litlist-306a8.firebaseio.com",
+    projectId: "litlist-306a8",
+    storageBucket: "litlist-306a8.appspot.com",
+    messagingSenderId: "188274961247"
+  };
+
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+  function addItem(category, name, review) {
+    var postObject = {
+      nitemCategory: category,
+      nitemName: name,
+      nitemReview: review,
+    };
+    var uid = sessionStorage.getItem("uid");
+
+    if (typeof uid == "string" && uid.length) {
+      // Write the new post's data simultaneously in the posts list and the user's post list.
+      console.log(uid);
+      return firebase.database().ref('/users/' + uid + "/items").push(postObject);
+    } else {
+      // Cannot add item, no user id!
+      console.log('Cannot Add Item - No User');
+      return false;
+    }
+  };
+
+  // "Add List Item" click event
+  $("#search-item-form").on("submit", function(event) {
+    event.preventDefault();
+    console.log($(this).find('[name="proAdd"]'));
+    // @TODO: Call the "create modal function", pass in the below for the body of the modal
+    // createModal('Search Results',  )
+    getShopDotComProduct($(this).find('[name="proAdd"]').val().trim(), "#search-results", function(e) {
+      console.log("Clicked! Show Review Modal!");
+      console.log($(this).data("itemID"));
+      // @TODO: Add the code here to show the Review Form in a Modal
+      // Be sure to account for the "submit" event of the Review Modal Form (the #write-review-form needs to already exist)
+    });
+  });
+
+  // Save Item when Review Form Submitted
+  $("#write-review-form").on("submit", function(event) {
+
+    // prevent the form from submitting on default
+    event.preventDefault();
+
+    // using postData object to store the name and the movie.
+    if (false !== addItem(
+      $(this).find('[name="profPgCat"]').val().trim(),
+      $(this).find('[name="proAdd"]').val().trim(),
+      $(this).find('[name="revAdd"]').val().trim()
+    )) {
+
+      var uid = sessionStorage.getItem("uid");
+      database.ref('/users/' + uid + "/items").limitToLast(1).on("child_added", function(snap){
+        console.log('Last Item Added: ' + snap.key, snap.val());
+        // @TODO: Write the snap.val() items to the page somewhere.
+
+      });
+
+    }
+
+  });
+  
+ </script>
+</body>
+</html>
