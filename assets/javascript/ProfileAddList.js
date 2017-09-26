@@ -25,16 +25,21 @@ $("#submit-user").on("click", function(event) {
   var itemReview = $("#review").val().trim();
   var user = $("#userName").val().trim();
 
-  // Creates local "temporary" object for holding train data
+  // Creates local "temporary" object for holding user data
   var newPerson = {
+    username: user,
+    location: userCityNew,
+    image: userNew,
+    items: []       
+
             username: user,
             location: userCityNew,
             image: userNew,
             items: []
            
+
           };
           console.log(newPerson);
-
           // $("#createInitial").attr('data', userName);
 
           var ref = database.ref("/users/");
@@ -56,28 +61,18 @@ $("#submit-user").on("click", function(event) {
             var naddReview = $("#addReview").val().trim();
 
             addItem(naddCategory, naddName, naddReview);
-           
-        
-
         });
-
 
           function addItem (category, name, review){
             var postObject = {
                 nitemCategory: category,
                 nitemName: name,
                 nitemReview: review,
-
               };
           var uid = sessionStorage.getItem("uid");
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
-     
-          
-
           return firebase.database().ref('/users/' + uid + "/items").push(postObject);
-        
-
           };
 
           
@@ -92,3 +87,44 @@ $("#submit-user").on("click", function(event) {
 
           //       list.push(newProduct);
           //  });
+
+  // Store everything into a variable.
+  $("h3").click(function(){
+    alert("clicked")
+    //replace id with this.id
+  database.ref("/users/" + "-Kuq8MbwRK2fhDe2ARY0").once("value").then(function(snap){
+      console.log(snap);
+      var users = snap.val();
+      var items = users.items
+      for(var key in items){
+        console.log("category ", items[key].nitemCategory);
+        console.log("Id ", items[key].nitemId);
+        console.log("name ", items[key].nitemName);
+        console.log("review ", items[key].nitemReview);
+
+        var itemCategory = items[key].nitemCategory;
+        var itemId = items[key].nitemId;
+        var itemName = items[key].nitemName;
+        var itemReview = items[key].nitemReview;
+
+        $("#catTable > tbody")
+  //.append("<tr>").data("id", .key) 
+  .append($("<tr>").text(itemCategory))
+  .append($("<td>" + itemId + "</td>"))
+  .append($("<td>" + itemName + "</td>"))
+  .append($("<td>" + itemReview + "</td>"))
+  .append($("<td>"));
+      }
+      //debugger
+
+  })
+  
+  
+ 
+ 
+  
+  // Add each users's data into the table
+  
+
+
+});   
