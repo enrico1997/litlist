@@ -12,7 +12,6 @@
   
   <!-- Bootstrap CDN-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
   <!-- Firebase Reference -->
@@ -23,24 +22,29 @@
   
   <!-- Style -->
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/cat_and_people.css">
+
 
 </head>
 <body>
   <!-- JUMBO -->
-  <div class="jumbotron">
-      <h1 class="animated pulse">LiTLiST</h1>
-      <p>A few of your favourite things...</p>
-
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
-        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul>
+  <div class="container">
+    <div class="jumbotron">
+      <div class="row">
+        <h1 class="animated pulse"><a href="index.html">LiTLiST</a></h1>
+        <p>A few of your favourite things...</p>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
+          <span class="glyphicon glyphicon-menu-hamburger" id="hamburger" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="www.yahoo.com">My Account</a></li>
+            <li><a href="www.google.com">Log Out</a></li>
+          </ul>
+        </div>
       </div>
+    </div>
   </div>
 
   <!-- MAIN -->
@@ -51,7 +55,7 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Create your Profile</strong></h3>
+            <h2 class="panel-title"><strong>Create your Profile</strong></h2>
           </div>            
           <div class="panel-body" id="createProfile">
             <div class="form-group">
@@ -70,7 +74,7 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><strong>Start your LiTLiST</strong></h3>
+            <h2 class="panel-title"><strong>Start your LiTLiST</strong></h2>
           </div>          
           <!-- Favorites form (various inputs) -->
           <div class="panel-body" id="createList">
@@ -98,7 +102,7 @@
                 <input class="form-control" id="review" type="text">
               </div>        
               <button class="btn btn-primary" id="submit-user" type="submit">Search
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-search" id="magniGlass" aria-hidden="true"></span>
               </button>
            </form>
           </div>          
@@ -109,38 +113,31 @@
   </div>
    
 <!-- FOOTER -->
-<footer>
-<div id="footer">
-  <div class="container">
-    <div class="footer__links__primary">
-    </div>
-    
-    <div class="row social-links">
-      <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
-      <span class="icon-facebook">
-        <picture>
-          <source srcset="./assets/images/facebook.png" media="(min-width: 600px)">
-          <img src="./assets/images/facebook.png"" alt="MDN">
-        </picture>
-      </span>
-      <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
-      <span class="icon-instagram">
-        <picture>
-          <source srcset="./assets/images/instagram.png" media="(min-width: 600px)">
-          <img src="./assets/images/instagram.png"" alt="MDN">
-        </picture>
-      </span>
-      <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
-      <span class="icon-facebook">
-        <picture>
-          <source srcset="./assets/images/twitter.png" media="(min-width: 600px)">
-          <img src="./assets/images/twitter.png"" alt="MDN">
-        </picture>
-      </span>
-    </div>
-    <p class="muted credit">Copyright &copy; 2017 LiTLiST Inc.</p>
+<footer class="footer" id="footer">
+  <div class="container social-links">
+    <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
+    <span class="icon-facebook">
+      <picture>
+        <source srcset="./assets/images/facebook.png" media="(min-width: 600px)">
+        <img src="./assets/images/facebook.png"" alt="MDN">
+      </picture>
+    </span>
+    <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
+    <span class="icon-instagram">
+      <picture>
+        <source srcset="./assets/images/instagram.png" media="(min-width: 600px)">
+        <img src="./assets/images/instagram.png"" alt="MDN">
+      </picture>
+    </span>
+    <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
+    <span class="icon-facebook">
+      <picture>
+        <source srcset="./assets/images/twitter.png" media="(min-width: 600px)">
+        <img src="./assets/images/twitter.png"" alt="MDN">
+      </picture>
+    </span>
+   <p class="text-muted">Copyright &copy; 2017 Team HealthNut Inc.</p>
   </div>
-</div>
 </footer>
 
 <script type="text/javascript" src="assets/javascript/ProfileAddList.js"></script>

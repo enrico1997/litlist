@@ -1,50 +1,92 @@
-<!DOCTYPE <html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
-  <title>LiTLiST</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-  <!-- JQuery -->
+  <title>People Products</title>
+  <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-</head>
-
-<body>
-
-</head>
-
-<body>
-<div class="container">
   
-  <div id="headerDiv" class="jumbotron">
-    <h1><span>LiTLiST</span></h1>
-    <h3><span></span></h3>
+  <!-- Moment.js Reference -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  
+  <!-- Bootstrap CDN-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+  <!-- Animate -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  
+  <!-- Style -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/cat_and_people.css">
+</head>
+
+<body>
+
+  <!-- JUMBO -->
+  <div class="container">
+    <div class="jumbotron">
+      <div class="row">
+        <h1 class="animated pulse"><a href="index.html">LiTLiST</a></h1>
+        <p>A few of your favourite things...</p>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
+          <span class="glyphicon glyphicon-menu-hamburger" id="hamburger" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="www.yahoo.com">My Account</a></li>
+            <li><a href="www.google.com">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 
-</div>
-
-<a href="#" class="button">
-    <span>People</span>
-</a>
-<a href="#" class="button">
-    <span>Products</span>
-</a>
-</body>
-
+  <!--MAIN-->
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>People</h3>
+          <button id="people" class="catButt"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></button>
+        </div>
+        <div class="col-sm-4">
+          <h3>Products</h3>
+          <button id="products" class="catButt"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span></button>
+        </div>
+      </div>
+    </div>
 	
-
-<footer>
-<div id="footer">
-<div class="container">
-  <p class="muted credit">Copyright &copy; 2017 Team Healthnut</p>
-</div>
-</div>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container social-links"> 
+        <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
+        <span class="icon-facebook">
+          <picture>
+            <source srcset="./assets/images/facebook.png" media="(min-width: 600px)">
+            <img src="./assets/images/facebook.png"" alt="MDN">
+          </picture>
+        </span>
+        <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
+        <span class="icon-instagram">
+          <picture>
+            <source srcset="./assets/images/instagram.png" media="(min-width: 600px)">
+            <img src="./assets/images/instagram.png"" alt="MDN">
+          </picture>
+        </span>
+        <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
+        <span class="icon-facebook">
+          <picture>
+            <source srcset="./assets/images/twitter.png" media="(min-width: 600px)">
+            <img src="./assets/images/twitter.png"" alt="MDN">
+          </picture>
+        </span>
+      <p class="text-muted">Copyright &copy; 2017 Team HealthNut Inc.</p>
+    </div>
+  </footer>
 
 </body>
 
