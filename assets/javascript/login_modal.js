@@ -15,7 +15,7 @@ function createModal(title, formId, formData) {
             ).append(
                 $("<div>").addClass("modal-footer").append(
                   $("<button>").attr('type', 'button').addClass("btn btn-default").data("dismiss", "modal").text("close").on('click', function(e) {
-                  	$(this).closest('.modal').modal('toggle');
+                    $(this).closest('.modal').modal('toggle');
                   })
                 ).append(
                     $("<button>").addClass("btn btn-primary").text("Save changes")
@@ -26,16 +26,16 @@ function createModal(title, formId, formData) {
   ).modal();
 };
 
-
-function showUserForm() {
-  createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>"))
-    .modal('show');
-  $('#createProfile').on('hidden.bs.modal', function(e) { 
-  	console.log("The Create Profile Modal was closed", e);
-  });
+function createUserForm() {
+  return createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>"));
 }
 
-//TODO: ADD A BUTTON TO HTML TO ENABLE THIS ONCLICK!!!!!!!!!
+function createInitialLitList() {
+  return createModal2("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"));
+}
+
+
+
 $("#InitListButton").on("click", function createInitalLitList(){
   e.preventDefault();
   createModal("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"))        
@@ -61,6 +61,28 @@ $("#addLit").on("click", function AddLitList(e){
  //createInitialLitList();
  //AddLitList();
 
+function addToLitList() {
+    return createModal3("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"));
+}
+
+// jQuery Event Handlers.
+$("#addLit").on("click", function(e) {
+  e.preventDefault();
+  addToLitList().modal('show');
+});
+
+$("#pplRows").on("click", function (e){
+  e.preventDefault();
+  createInitialLitList().modal('show');
+});
+
+$(document).ready(function(e) {
+ createUserForm().modal('show');
+});
+
+
+
+
  // sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
 
   var config = {
@@ -77,8 +99,13 @@ $("#addLit").on("click", function AddLitList(e){
   var database = firebase.database();
   var path;
 
-  //userNew;
+
+  //userNew; It doesn't look like these variables are defined
   //userCityNew;
+
+  var userNew;
+  var userCityNew;
+
 
   $(".btn btn-primary").on("click", function(event) {
 
@@ -89,17 +116,17 @@ $("#addLit").on("click", function AddLitList(e){
     var userCityNew = $("#userCity").val().trim();
   });
 
-$(".btn btn-primary").on("click", function(event) {
+$(".btn btn-intList").on("click", function(event) {
 
     var itemCategory = $("#itemCategory").val().trim();
     var itemName = $("#item_name").val().trim();
 
     var itemReview = $("#review").val().trim();
-    var user = $("#userName").val().trim();
+   
 
     // Creates local "temporary" object for holding train data
     var newPerson = {
-      username: user,
+      username: userNew,
       location: userCityNew,
       image: userNew,
       items: []    
