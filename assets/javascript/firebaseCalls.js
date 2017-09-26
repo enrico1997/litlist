@@ -30,35 +30,51 @@
 
 // Load names on images
 database.ref("/users").on("child_added", function(childSnapshot) {
-  console.log(childSnapshot.val());
+   console.log(childSnapshot.val());
   
   // Store everything into a variable.
   var userName = childSnapshot.val().username;
-  var userImage = childSnapshot.val().image
-  var userGuid = database.ref("/users");
+  var userImage = childSnapshot.val().image;
+  var userGuid = childSnapshot.key
 
-  console.log(userName + " " + userGuid)
+  console.log("username: " + userName + " userGuid: " + userGuid)
 
-  $("#pplRows").append("<div>").addClass("col-sm-4 col-xs-6 col-lg-3").attr('id', userGuid).val(username);
-  $("#" + userGuid).append("img").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage)
-
+  $("#pplRows").append(
+    $("<div>").addClass("col-sm-4 col-xs-6 col-lg-3")
+      .append(
+        $("<h3>").text(userName).addClass("ppl"))
+      .append(
+        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage + ".jpg").attr('id', userGuid).attr('val',userName))
+      );
 
 }); // end of fb listener
 
-// $("img").on("click", function(this) {
+  $("img").on("click", function(){
+    alert("clicked")
+    //replace id with this.id
+    database.ref("/users/" + this.id).once("value").then(function(snap){
+        console.log(snap);
+        var users = snap.val();
+        var items = users.items
+        for(var key in items){
+          console.log("category ", items[key].nitemCategory);
+          console.log("Id ", items[key].nitemId);
+          console.log("name ", items[key].nitemName);
+          console.log("review ", items[key].nitemReview);
 
+         var itemCategory = items[key].nitemCategory;
+          var itemId = items[key].nitemId;
+          var itemName = items[key].nitemName;
+          var itemReview = items[key].nitemReview;
 
-
-//   var personGuid = this.id
-//   console.log(pplButtSel)
-
-//   $("#trainTable > tbody").append("<tr><td>" 
-//                                   + retName + "</td><td>" 
-//                                   + retDest + "</td><td>" 
-//                                   + retFreq + "</td><td>" 
-//                                   + nextTrain + "</td><td>" 
-//                                   + minToTrain + "</td></tr>"
-//                                   );
-
-
-// });
+         $("#catTable > tbody")
+    //.append("<tr>").data("id", .key)
+    .append($("<tr>").text(itemCategory))
+    .append($("<td>" + itemId + "</td>"))
+    .append($("<td>" + itemName + "</td>"))
+    .append($("<td>" + itemReview + "</td>"))
+    .append($("<td>"));
+    }
+    $("#headerName").text(userName + "'s LiTLiST");
+    });
+  });

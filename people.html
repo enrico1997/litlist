@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 	<!-- Firebase Reference -->
-  <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
 	<!-- Animate -->
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -32,7 +32,7 @@
     <div class="jumbotron">
       <div class="row">
         <h1 class="animated pulse"><a href="index.html">LiTLiST</a></h1>
-        <p>A few of your favourite things...</p>
+        <p>Only your favorites...</p>
         <div class="dropdown">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
           <span class="glyphicon glyphicon-menu-hamburger" id="hamburger" aria-hidden="true"></span>
@@ -48,55 +48,8 @@
 	
 	<!-- MAIN -->
 	<div class="container" id="pplCont">
-		<div class="row">
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Person Name</h3>
-				<img src="assets/images/pp1.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Another Person</h3>
-				<img src="assets/images/pp2.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Cool Person</h3>
-				<img src="assets/images/pp3.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Cool Person</h3>
-				<img src="assets/images/pp4.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Lit Person</h3>
-				<img src="assets/images/pp5.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Person Name</h3>
-				<img src="assets/images/pp6.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Another Person</h3>
-				<img src="assets/images/pp7.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Person Name</h3>
-				<img src="assets/images/pp8.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Lit Person</h3>
-				<img src="assets/images/pp9.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Another Person</h3>
-				<img src="assets/images/pp10.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Person Name</h3>
-				<img src="assets/images/pp11.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
-			<div class="col-sm-4 col-xs-6 col-lg-3">
-				<h3 class="ppl">Lit Person</h3>
-				<img src="assets/images/pp12.jpg" class="img img-thumbnail img-responsive center-block"></img>
-			</div>
+		<div id="pplRows" class="row">
+			<!-- dynamically created images go here -->
 		</div>
 	</div>
 
@@ -104,7 +57,7 @@
 	<div class="container" id="tbleContainer">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h2>Person Name's LiTLiST</h2>
+				<h2 id="headerName">Person Name's LiTLiST</h2>
 			</div>
 			<div class="panel-body">
 				<table id="catTable">
@@ -157,5 +110,6 @@
 	  	</div>
 	</footer>
 
+<script type="text/javascript" src="assets/javascript/firebaseCalls.js"></script>
 </body>
 </html>
