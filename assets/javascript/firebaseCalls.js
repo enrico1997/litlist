@@ -49,7 +49,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
 
 }); // end of fb listener
 
-  $("img").on("click", function(){
+  $("h3").click(function(){
     alert("clicked")
     //replace id with this.id
     database.ref("/users/" + this.id).once("value").then(function(snap){
@@ -62,7 +62,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
           console.log("name ", items[key].nitemName);
           console.log("review ", items[key].nitemReview);
 
-         var itemCategory = items[key].nitemCategory;
+          var itemCategory = items[key].nitemCategory;
           var itemId = items[key].nitemId;
           var itemName = items[key].nitemName;
           var itemReview = items[key].nitemReview;
@@ -75,6 +75,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
     .append($("<td>" + itemReview + "</td>"))
     .append($("<td>"));
     }
-    $("#headerName").text(userName + "'s LiTLiST");
+    //$("#headerName").text(userName + "'s LiTLiST");
     });
   });
+
