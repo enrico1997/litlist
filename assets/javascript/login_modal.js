@@ -26,6 +26,63 @@ function createModal(title, formId, formData) {
   ).modal();
 };
 
+function createModal2(title, formId, formData) {
+  return $("div#global-modal").append(
+    $("<form>").attr("id", formId).append(
+        $("<div>").addClass("modal-dialog").append(
+            $("<div>").addClass("modal-content").append(
+                $("<div>").addClass("modal-header").append(
+                    $("<button>").addClass("close").data("dismiss", "modal").attr("aria-hidden", "true")
+                ).append(
+                    $("<h4>").addClass("modal-title").text(title)
+                )
+            ).append(
+              $("<div>").addClass("modal-body").append(
+                  formData
+                )
+            ).append(
+                $("<div>").addClass("modal-footer").append(
+                  $("<button>").attr('type', 'button').addClass("btn btn-default").data("dismiss", "modal").text("close").on('click', function(e) {
+                    $(this).closest('.modal').modal('toggle');
+                  })
+                ).append(
+                    $("<button>").addClass("btn btn-intList").text("Save changes")
+                )
+            )
+         )  
+     )
+  ).modal();
+};
+
+function createModal3(title, formId, formData) {
+  return $("div#global-modal").append(
+    $("<form>").attr("id", formId).append(
+        $("<div>").addClass("modal-dialog").append(
+            $("<div>").addClass("modal-content").append(
+                $("<div>").addClass("modal-header").append(
+                    $("<button>").addClass("close").data("dismiss", "modal").attr("aria-hidden", "true")
+                ).append(
+                    $("<h4>").addClass("modal-title").text(title)
+                )
+            ).append(
+              $("<div>").addClass("modal-body").append(
+                  formData
+                )
+            ).append(
+                $("<div>").addClass("modal-footer").append(
+                  $("<button>").attr('type', 'button').addClass("btn btn-default").data("dismiss", "modal").text("close").on('click', function(e) {
+                    $(this).closest('.modal').modal('toggle');
+                  })
+                ).append(
+                    $("<button>").addClass("btn btn-addList").text("Save changes")
+                )
+            )
+         )  
+     )
+  ).modal();
+};
+
+
 
 function showUserForm() {
   createModal("Login", "Create your Profile", $("<div class='col-lg-12'><div class= 'panel-body' id='createProfile'><div class='form-group'><label for='userName'>Name</label><input class='form-control' id='userName' type='text'></div><div class='form-group'><label for='userCity'>Your Location</label><input class='form-control' id='userCity' type='text'></div></div>"))
@@ -38,7 +95,7 @@ function showUserForm() {
 
 $("#pplRows").on("click", function createInitalLitList{
   e.preventDefault();
-  createModal("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"))        
+  createModal2("Create Initial List", $("<div class='col-lg-12'><div class='panel-body' id='createList'><form role='form'><div class='form-group'><label for='text'>Choose a Category</label><select class='form-control' id='itemCategory'><option value='Books'>Books</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><div class='form-group'><label for='item_name'>Type in your Favourite Product</label><input class='form-control' id='item_name' type='text'></div> <div class='form-group'><label for='review'>Why is this your Favourite?</label><input class='form-control' id='review' type='text'></div>"))        
   .modal("show");
   
   $('#CreateInitial').on('hidden.bs.modal', function(e) { 
@@ -50,7 +107,7 @@ $("#pplRows").on("click", function createInitalLitList{
 $("#addLit").on("click", function AddLitList{
 
 	e.preventDefault();
-	createModal("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
+	createModal3("Add to Lit List", $("<div class='col-lg-12'><div class='panel-body'><form id='add-item-form'><div><label for='profPgCat'>Category</label><select class='form-control' name='profPgCat'><option value='Books'>Books</option><option value='Movies'>Movies</option><option value='Beauty'>Beauty</option><option value='Health'>Health</option><option value='Sports'>Sports</option><option value='Home'>Home</option><option value='Toys'>Toys</option></select></div><br><div><label for='prodAdd'>Type in your favorite product</label><input class='form-control' name='proAdd' type='text'></div><br><div><label for='revAdd'>Write a review</label><input class='form-control' name='revAdd' type='text></div>"))	
 	.modal("show");
   $('#AddtoList').on('hidden.bs.modal', function(e) { 
     console.log("The Add List was closed", e);
@@ -89,7 +146,7 @@ $("#addLit").on("click", function AddLitList{
     var userCityNew = $("#userCity").val().trim();
   });
 
-$(".btn btn-primary").on("click", function(event) {
+$(".btn btn-intList").on("click", function(event) {
 
     var itemCategory = $("#itemCategory").val().trim();
     var itemName = $("#item_name").val().trim();
