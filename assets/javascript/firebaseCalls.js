@@ -72,7 +72,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
 
         $("#productRows")
           .append($("<tr>"))
-          .append($("<td>" + ("<a href=itemId>") + itemName + "</td>"))
+          .append($("<td>" + ("<a href=itemId target='_blank'>") + itemName + "</td>")) //opens to new tab
           .append($("<td>" + itemReview + "</td>"))
           .append($("<td>" + itemCategory + "</td>"))
           .append($("</tr>"));
