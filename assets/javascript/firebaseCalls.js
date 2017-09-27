@@ -76,10 +76,10 @@ database.ref("/users").on("child_added", function(childSnapshot) {
           var itemReview = items[key].nitemReview;
 
          $("#productRows")
-    //.append("<tr>").data("id", .key)
+
         .append($("<tr>"))
-        .append($("<td>" + itemName + "</td>"))
-        .append($("<td>" + itemId + "</td>"))
+        //get itemName to be a hyperlink to itemId
+        .append($("<td>" + ("<a href=itemId>") + itemName + "</td>"))
         .append($("<td>" + itemReview + "</td>"))
         .append($("<td>" + itemCategory + "</td>"))
         .append($("</tr>"));
