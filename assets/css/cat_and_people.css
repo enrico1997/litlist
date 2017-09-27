@@ -73,7 +73,6 @@ body {
 	padding-left: 25px;
 	padding-right: 25px;
 	margin-top: 30px;
-	overflow-x: scroll;
 }
 th, td {
 	width: 25%;
@@ -119,4 +118,12 @@ body {
 
 p {
 	color: white;
+}
+
+@media screen and (max-width: 1200px) {
+
+	#tbleContainer {
+		overflow-x: scroll;
+	}
+
 }
