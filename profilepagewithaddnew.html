@@ -18,7 +18,7 @@
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
    <!-- lodash -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>f
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 
   <script type="text/javascript" src=./assets/javascript/api.js></script>
 
@@ -38,21 +38,9 @@
   <div class="container">
     <div class="jumbotron">
       <div class="row">
-        <h1 class="animated pulse"><a href="index.html">LiTLiST</a></h1>
+        <h1 class="animated pulse"><a href="people.html">LiTLiST</a></h1>
         <p id="profPgName">Name</p>
-        <img class="center" src="assets/images/pp16.jpg" alt="avatar" style="width:150px;height:150px;">
-
-
-
- <!--        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
-          <span class="glyphicon glyphicon-menu-hamburger" id="hamburger" aria-hidden="true"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="www.yahoo.com">My Account</a></li>
-            <li><a href="www.google.com">Log Out</a></li>
-          </ul>
-        </div> -->
+        <img id="imgSpot" class="center" src="assets/images/pp16.jpg" alt="avatar" style="width:150px;height:150px;">
       </div>
     </div>
   </div>
@@ -92,7 +80,6 @@
               </button>
             </form>
           </div>
-
       </div>
     </div>
   </div>
@@ -169,7 +156,7 @@ function createUserForm() {
 
  // createUserForm();
 
- sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
+ // sessionStorage.setItem('uid','-KuqD0WCyJsJqpjiKCAD');
 
   var config = {
     apiKey: "AIzaSyD43oZfYX_igbsUwjewJtrNGQr4bpCrzBk",
@@ -191,7 +178,7 @@ function createUserForm() {
       nitemName: name,
       nitemReview: review,
     };
-    var uid = sessionStorage.getItem("uid");
+    var uid = localStorage.getItem("userId");
 
     if (typeof uid == "string" && uid.length) {
       // Write the new post's data simultaneously in the posts list and the user's post list.
@@ -232,7 +219,7 @@ function createUserForm() {
       $(this).find('[name="revAdd"]').val().trim()
     )) {
 
-      var uid = sessionStorage.getItem("uid");
+      var uid = localStorage.getItem("userId");
       database.ref('/users/' + uid + "/items").limitToLast(1).on("child_added", function(snap){
         console.log('Last Item Added: ' + snap.key, snap.val());
         // @TODO: Write the snap.val() items to the page somewhere.
@@ -242,6 +229,13 @@ function createUserForm() {
     }
 
   });
+
+  $(document).ready(function() {
+    var uName = localStorage.getItem("userName");
+    var uImg = localStorage.getItem("userImg");
+    $("#profPgName").html(uName);
+    $("#imgSpot").attr('src', uImg + ".jpg");
+  })
   
  </script>
 </body>

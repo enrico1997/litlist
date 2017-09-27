@@ -86,6 +86,8 @@ database.ref("/users").on("child_added", function(childSnapshot) {
 
         // store Guid into local storage
         localStorage.setItem("userId", snap.key);
+        localStorage.setItem("userName", users.username);
+        localStorage.setItem("userImg", users.image);
     });
 
     $('#productRows').empty();
