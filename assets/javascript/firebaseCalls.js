@@ -71,10 +71,11 @@ database.ref("/users").on("child_added", function(childSnapshot) {
         var itemReview = items[key].nitemReview;
 
         $("#productRows")
-          var itemCategory = items[key].nitemCategory;
-          var itemId = items[key].nitemId;
-          var itemName = items[key].nitemName;
-          var itemReview = items[key].nitemReview;
+          .append($("<tr>"))
+          .append($("<td>" + ("<a href=itemId>") + itemName + "</td>"))
+          .append($("<td>" + itemReview + "</td>"))
+          .append($("<td>" + itemCategory + "</td>"))
+          .append($("</tr>"));
 
         $("#headerName").text(users.username + "'s LiTLiST");
 
