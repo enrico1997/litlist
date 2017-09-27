@@ -24,7 +24,7 @@ $("#submit-user").on("click", function(event) {
 
   var itemReview = $("#review").val().trim();
   var user = $("#userName").val().trim();
-  var userImg = "asset/images/ppl" + _.random(1, 19);
+  var userImg = "assets/images/pp" + _.random(1, 19);
     console.log(userImg);
 
   // Creates local "temporary" object for holding user data
