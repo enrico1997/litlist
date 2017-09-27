@@ -16,13 +16,14 @@ function getShopDotComProduct(productWanted, parentElement, clickCb) {
   // xhr.send('');
 
 
-  // Creating an AJAX call for the specific button being clicked
+  // Creating an AJAX call when searching for a product
   $.ajax({
     url: url + queryParams,
     method: "GET"
   }).done(function(response) {
     console.log(response);
 
+    // Using Lodash to filter out products with no ID and to order the return
    var products = _.filter(response.searchItems, function(o) { return o.prodID !== 0; });
    products = _.orderBy(products, ['caption'], ['asc']);
    console.log(products);
@@ -31,7 +32,7 @@ function getShopDotComProduct(productWanted, parentElement, clickCb) {
       // Creating a div to hold the giphys
       var giphyDiv = $("<div class='giphy col-xs-12 col-sm-6 col-md-4 col-lg-4'>");
 
-      // Storing the rating data
+      // Storing the product name
       var ItemName = products[i].caption;
       console.log(ItemName);
 
@@ -39,25 +40,29 @@ function getShopDotComProduct(productWanted, parentElement, clickCb) {
       console.log(ItemID);
       giphyDiv.data("itemID", ItemID);
 
+      var ItemURI = products[i].modelQuickViewDetails.linkUrl;
+      console.log(ItemURI);
+      giphyDiv.data("itemURI", ItemURI);
+
       // Creating an element to have the product name displayed
       var pOne = $("<p>").text(ItemName);
 
-      // Displaying the rating
+      // Displaying the Product Name
       giphyDiv.append(pOne);
 
       // Retrieving the still and animated URLs for the image
       var stillImgURL = products[i].imageURI;
-      var animatedImgURL = products[i].imageURI;
+      // var animatedImgURL = products[i].imageURI;
 
       // Creating an element to hold the image
       var a = $("<img>")
         .attr("src", stillImgURL);
       // Adding a data-attributes
-      a.attr("data-still", stillImgURL);
-      a.attr("data-state", "still");
-      a.attr("data-animate", animatedImgURL);
-      // Adding a class of gif to image
-      a.addClass ("gif");
+      // a.attr("data-still", stillImgURL);
+      // a.attr("data-state", "still");
+      // a.attr("data-animate", animatedImgURL);
+      // // Adding a class of gif to image
+      // a.addClass ("gif");
 
       giphyDiv.append(a).on('click', clickCb);
 
