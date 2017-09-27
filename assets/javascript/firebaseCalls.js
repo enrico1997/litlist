@@ -74,6 +74,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
           var itemId = items[key].nitemId;
           var itemName = items[key].nitemName;
           var itemReview = items[key].nitemReview;
+          var userName = users.username;
 
          $("#productRows")
 
@@ -83,10 +84,11 @@ database.ref("/users").on("child_added", function(childSnapshot) {
         .append($("<td>" + itemReview + "</td>"))
         .append($("<td>" + itemCategory + "</td>"))
         .append($("</tr>"));
+
+        $("#headerName").text(userName + "'s LiTLiST");
     }
 
-    
-    //$("#headerName").text(userName + "'s LiTLiST");
+       
     });
     $('#productRows').empty();
   });
