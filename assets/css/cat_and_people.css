@@ -50,6 +50,11 @@ h3 {
 .ppl {
 	bottom: 10%;
 }
+
+#addLit {
+margin-top: 0;
+}
+
 .col-sm-4 {
 	text-align: center;
 	margin-top: 30px;
@@ -78,6 +83,12 @@ table {
   	border-collapse: separate;
   	border-spacing: 25px 0;
 }
+
+.giphy {
+	color: darkslategray;
+	font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+}
+
 #apparel {
 	font-size: 1.75em;
 	padding-bottom: 10px;

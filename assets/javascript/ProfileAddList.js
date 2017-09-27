@@ -91,7 +91,7 @@ $("#submit-user").on("click", function(event) {
   // Store everything into a variable.
   
   $("h3").click(function(){
-    alert("clicked")
+    alert("clicked - find me in profileaddlist.js")
     //replace id with this.id
   database.ref("/users/" + "-Kuq8MbwRK2fhDe2ARY0").once("value").then(function(snap){
       console.log(snap);

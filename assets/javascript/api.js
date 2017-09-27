@@ -45,7 +45,7 @@ function getShopDotComProduct(productWanted, parentElement, clickCb) {
       giphyDiv.data("itemURI", ItemURI);
 
       // Creating an element to have the product name displayed
-      var pOne = $("<p>").text(ItemName);
+      var pOne = $("<h4>").text(ItemName);
 
       // Displaying the Product Name
       giphyDiv.append(pOne);
