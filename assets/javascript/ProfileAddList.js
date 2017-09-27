@@ -18,12 +18,14 @@ $("#submit-user").on("click", function(event) {
 
   // Grabs user input
   var userNew = $("#userName").val().trim();
-          var userCityNew = $("#userCity").val().trim();
+  var userCityNew = $("#userCity").val().trim();
   var itemCategory = $("#itemCategory").val().trim();
   var itemName = $("#item_name").val().trim();
 
   var itemReview = $("#review").val().trim();
   var user = $("#userName").val().trim();
+  var userImg = "asset/images/ppl" + _.random(1, 19);
+    console.log(userImg);
 
   // Creates local "temporary" object for holding user data
   var newPerson = {
@@ -34,7 +36,7 @@ $("#submit-user").on("click", function(event) {
 
             username: user,
             location: userCityNew,
-            image: userNew,
+            image: userImg,
             items: []
            
 
