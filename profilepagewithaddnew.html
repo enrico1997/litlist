@@ -26,46 +26,41 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   
   <!-- Style -->
-  <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/cat_and_people.css">
 
 </head>
 
 <body>
 
-<div class="row">
-<div class="col-md-12">
+  <!-- JUMBO -->
+  <div class="container">
+    <div class="jumbotron">
+      <div class="row">
+        <img class="center" src="assets/images/Health.jpeg" alt="heart" style="width:150px;height:150px;">
+        <p id="profPgName">Name</p>
+        <p id="profPgLocation">Location</p>
 
-  <img class= "center" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThpN2z54GCTLb3qE9JEtQ5QVbtL-DEj33eYbrFNPbtKMFs4T9k" alt="crystal ball" style="width:150px;height:150px;">
-</div>
-</div>
 
-<br>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgName"> Name </h1>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgLocation"> Location </h1>
-</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-  <h1 id="profPgLit"> Lit List </h1>
-</div>
-</div>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">          
+          <span class="glyphicon glyphicon-menu-hamburger" id="hamburger" aria-hidden="true"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="www.yahoo.com">My Account</a></li>
+            <li><a href="www.google.com">Log Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <div class="row">
       <div class="col-lg-12">
 
         <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Add Item to Lit List</h3>
+              <h4 class="panel-title">Add Item to Lit List</h4>
             </div>
             
             <div class="panel-body">
@@ -111,6 +106,36 @@
   </div>
   
 <div id="search-results"></div>
+
+<div class="row">
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+      <div class="container social-links">
+        <a href="https://www.facebook.com" class="ico-anim social-facebook" title="Facebook" target="_blank"></a>
+        <span class="icon-facebook">
+          <picture>
+            <source srcset="./assets/images/facebook.png" media="(min-width: 600px)">
+          <img src="./assets/images/facebook.png"" alt="MDN">
+          </picture>
+        </span>
+        <a href="https://www.instagram.com" class="ico-anim social-instagam" title="Instagram" target="_blank"></a>
+        <span class="icon-instagram">
+            <picture>
+              <source srcset="./assets/images/instagram.png" media="(min-width: 600px)">
+            <img src="./assets/images/instagram.png"" alt="MDN">
+            </picture>
+        </span>
+        <a href="https://www.twitter.com" class="ico-anim social-twitter" title="Twitter" target="_blank"></a>
+        <span class="icon-facebook">
+          <picture>
+            <source srcset="./assets/images/twitter.png" media="(min-width: 600px)">
+            <img src="./assets/images/twitter.png"" alt="MDN">
+          </picture>
+        </span>
+        <p class="text-muted">Copyright &copy; 2017 Team HealthNut Inc.</p>
+      </div>
+  </footer>
+</div>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript">
