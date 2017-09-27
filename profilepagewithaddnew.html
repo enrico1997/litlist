@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset="UTF-8">
-  <title>Create Your Profile and LiTLiST</title>
+  <title>Add to LiTLiST</title>
   
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,8 +39,9 @@
     <div class="jumbotron">
       <div class="row">
         <h1 class="animated pulse"><a href="people.html">LiTLiST</a></h1>
-        <p id="profPgName">Name</p>
-        <img id="imgSpot" class="center" src="assets/images/pp16.jpg" alt="avatar" style="width:150px;height:150px;">
+          <div id="pplRows" class="row">
+            <!-- dynamically created images go here -->
+        </div>
       </div>
     </div>
   </div>
@@ -237,6 +238,32 @@ function createUserForm() {
     $("#imgSpot").attr('src', uImg + ".jpg");
   })
   
+// Load names on images to header
+database.ref("/users").on("value", function(childSnapshot) {
+  console.log(childSnapshot.val()); 
+
+  // Store everything into a variable.
+  var userName = localStorage.getItem("userName");
+  var userImage = localStorage.getItem("userImg");
+  var userGuid = localStorage.getItem("userId");
+
+  console.log("username: " + userName + " userGuid: " + userGuid)
+
+  $("#pplRows").append(
+    $("<div>").addClass("col-sm-4 col-xs-6 col-lg-3")
+      .append(
+        $("<h3>").text(userName).addClass("ppl"))
+      .append(
+        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage + ".jpg").attr('id', userGuid).attr('val',userName))
+      );
+
+
+}); // end of fb listener
+
  </script>
+
+<!-- <script type="text/javascript" src="assets/javascript/firebaseCalls.js"></script> -->
+
+
 </body>
 </html>
