@@ -55,7 +55,6 @@ database.ref("/users").on("child_added", function(childSnapshot) {
 }); // end of fb listener
 
   $(document).on('click', 'img', function(){
-    alert("clicked")
     //replace id with this.id
 
     //console.log(database.ref("/users/" + this.id).once("value"));
