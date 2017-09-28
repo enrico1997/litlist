@@ -240,7 +240,7 @@ function createUserForm() {
     var uName = localStorage.getItem("userName");
     var uImg = localStorage.getItem("userImg");
     $("#profPgName").html(uName);
-    $("#imgSpot").attr('src', uImg + ".jpg");
+    $("#imgSpot").attr('src', uImg);
   })
   
 // Load names on images to header
@@ -259,7 +259,7 @@ database.ref("/users").on("value", function(childSnapshot) {
       .append(
         $("<h3>").text(userName).addClass("ppl"))
       .append(
-        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage + ".jpg").attr('id', userGuid).attr('val',userName))
+        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage).attr('id', userGuid).attr('val',userName))
       );
 
 
