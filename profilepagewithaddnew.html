@@ -58,7 +58,7 @@
             <form id="search-item-form">
               <div>
                 <label for="profPgCat">Category</label>
-                <select class="form-control" name="profPgCat">
+                <select class="form-control" name="profPgCat" id="prodCategory">
                   <option value="Books">Books</option>
                   <option value="Movies">Movies</option>
                   <option value="Beauty">Beauty</option>
@@ -70,11 +70,11 @@
               </div>
               <div>
                 <label for="prodAdd">Type in your Favourite Product</label>
-                <input class="form-control" name="proAdd" type="text">
+                <input class="form-control" name="proAdd" type="text" id="prodName">
               </div>
               <div>
                 <label for="revAdd">Why is this your Favourite?</label>
-                <input class="form-control" name="revAdd" type="text">
+                <input class="form-control" name="revAdd" type="text" id="prodReview">
               </div>                
               <button class="btn btn-primary" name="prodSearch" type="submit">Search
                 <span class="glyphicon glyphicon-search" id="magniGlass" aria-hidden="true"></span>
@@ -173,12 +173,14 @@ function createUserForm() {
   var database = firebase.database();
 
 
-  function addItem(category, name, review) {
+  function addItem(category, name, review, URI) {
     var postObject = {
       nitemCategory: category,
       nitemName: name,
       nitemReview: review,
+      nitemId: URI,
     };
+    console.log("Post obj: ", postObject);
     var uid = localStorage.getItem("userId");
 
     if (typeof uid == "string" && uid.length) {
@@ -202,6 +204,8 @@ function createUserForm() {
       console.log("Clicked! Show Review Modal!");
       console.log($(this).data("itemID"));
       console.log($(this).data("itemURI"));
+      console.log($("#prodCategory").val());
+      addItem($("#prodCategory").val(), $("#prodName").val(), $("#prodReview").val(), $(this).data("itemURI"));
       // @TODO: Add the code here to show the Review Form in a Modal
       // Be sure to account for the "submit" event of the Review Modal Form (the #write-review-form needs to already exist)
     });
@@ -217,7 +221,8 @@ function createUserForm() {
     if (false !== addItem(
       $(this).find('[name="profPgCat"]').val().trim(),
       $(this).find('[name="proAdd"]').val().trim(),
-      $(this).find('[name="revAdd"]').val().trim()
+      $(this).find('[name="revAdd"]').val().trim(),
+      $(this).find('[name="itemURI"]').val().trim()
     )) {
 
       var uid = localStorage.getItem("userId");
