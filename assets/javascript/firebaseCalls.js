@@ -31,7 +31,7 @@ database.ref("/users").on("child_added", function(childSnapshot) {
       .append(
         $("<h3>").text(userName).addClass("ppl"))
       .append(
-        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage).attr('id', userGuid).attr('val',userName))
+        $("<img>").addClass("img img-thumbnail img-responsive center-block").attr("src", userImage + ".jpg").attr('id', userGuid).attr('val',userName))
       );
 
 
